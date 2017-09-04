@@ -673,6 +673,7 @@ function scrollerInit() {
 $.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/XaekaiModules.js");
+$.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
 
 
 //var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],

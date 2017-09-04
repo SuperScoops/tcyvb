@@ -20,7 +20,6 @@ console.log("sup yall");
 /*player skin*/
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
-$(".server-msg-reconnect").addClass("fa fa-plug");
 $("#videowrap").addClass("vjs-polyzor-skin");
 $(".server-msg-reconnect").text("Connected");
 $("body").addClass("darktheme");

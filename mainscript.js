@@ -1,5 +1,3 @@
-$.getscript("//rawgit.com/SuperScoops/thube/coolboy/JS/nnd-style-chat.js");
-
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);

@@ -13,7 +13,7 @@ $('#videowrap').hover(function(){
 
 $("#VideoOverlay").append($("#voteskip"));
 $("#VideoOverlay").append($("#mediarefresh"));
-$("#VideoOverlay").append($('<button/>',{id:'toggleNND','class':'btn btn-default btn-sm',html:'<span class="glyphicon glyphicon-cog"></span> NND Chat Settings',click:()=>$('#nndSettingsModal').modal()}));
+$("#VideoOverlay").append($('<button/>',{id:'toggleNND','class':'btn btn-sm btn-default OLB',html:'<span class="glyphicon glyphicon-cog"></span> NND Chat Settings',click:()=>$('#nndSettingsModal').modal()}));
 
 var requestFullscreen = function (ele) {
 	if (ele.requestFullscreen) {

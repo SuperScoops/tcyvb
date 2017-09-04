@@ -1,10 +1,6 @@
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
-
-
-
-
 $('head').append("<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' />"); 
 console.log("sup yall");
 
@@ -24,38 +20,24 @@ console.log("sup yall");
 /*player skin*/
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
+$(".server-msg-reconnect").addClass("fa fa-plug");
 $("#videowrap").addClass("vjs-polyzor-skin");
 $(".server-msg-reconnect").text("Connected");
-
-
 $("body").addClass("darktheme");
 $("#userlisttoggle").removeClass("glyphicon glyphicon-chevron-down pull-left pointer");
 $("#userlisttoggle").addClass("btn-default fa fa-users ch");
 $("#userlisttoggle").text("");
-
-
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
 $(".container-fluid").append($("#footer"));//move footer into mainpage element
-
-
-
-
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
-
 $("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
 $("#connected").append($("#usercount"));//move user count into previously created div
 $("#connected").append( "<span id='connectedText'>&nbsp Logged in users</span>" );//add "Connected" after user count
-
 $("#userlisttoggle").after($("#emotelistbtn"));
 $("#main").after("<div id='videoinfo' class='section'></div>");//create box to contain video title, description, and playlist options.
 $('#footer').children('.container').append('<p class="text-muted credit">');
-
 $("#main").after($("#drinkbarwrap"));
-
-
-
-
 $("#videoinfo").append("<div class='textheader'></div><div id='videoinfohead'><span id='addedbyTEXT'>Queued by <span id='addedby'></span></span><div id='headbottom'><div id='headright'><div id='ss7time' title='--:--'>0:00</div><div id='videolength'></div><div id='progbar'></div></div></div></div><div id='videoopts'></div>");
 $(".navbar-header").after($("#currenttitle")); //move video title below video player
 $("#headbottom").append("<button id='addmedia' title='Add Media' class='headbtn headbtnleft'></button>");
@@ -71,30 +53,11 @@ $("#fullscreenbtn").addClass("fa fa-arrows-alt");
 $("#fullscreenbtn").removeClass("btn btn-sm");
 $("#fullscreenbtn").addClass("ch");
 $("#emotelistbtn").after($("#fullscreenbtn"));
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $("#morebtn").after($("#videocontrols"));
 $("#videocontrols").removeClass("pull-right");
 //$("#drinkbarwrap").after($("#main"));
-
-
-
 $("#chatline").attr("placeholder","Type here to send a message");
 $("#main").after($("#motdrow"));
-
-
 $("#motdwrap").append($(".visible-lg"));
 $("#addedbyTEXT").after($("#usercount"));
 $("#morebtn").after("<ul class='dropdown-menu'><li id='mediarefreshli'></li><li><button></button></li><li id='modli'></li><li><button></button></li></ul>");
@@ -102,25 +65,11 @@ $("#modli").append($("#modflair"));
 $("#headbottom").append($("#mediarefresh"));
 $("#mediarefresh").text("Reload Video Player");
 $("#videoinfo").after($("#rightpane"));
-
 $("#rightpane-inner").prepend("<div id='mediabuttons'></div>");
 $("#rightpane-inner").addClass("section");
 $("#mediarefresh").addClass("btn btn-sm btn-default OLB");
 $("#voteskip").addClass("btn btn-sm btn-default OLB");
-
-
-
-
-
-
-
-
-
-
-
 $("#mediabuttons").append($("#showmediaurl"), $("#showcustomembed"), $("#showsearch"), $("#showplaylistmanager"));
-
-
 $("#rightpane").after("<div id='queuecontainer' class='section'><button id='pldropdown' data-toggle='dropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
 $("#queuecontainer").append($("#queue"));
 $("#upnext").append($("#plmeta"));
@@ -133,11 +82,6 @@ $('.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
      function(){ $('.timestamp').removeClass('fadeout') }
 )
-
-
-
-
-
 $('#queuecontainer').hover(function(){
     $('#pllength').css({
         'opacity':'0.9',
@@ -156,7 +100,6 @@ $("#usertheme").attr("href", "/css/themes/slate.css");
 $("#main").append($("#videowrap"));
 $("#maincontain .nano-content").append($("#mainpage > .container"));
 $("#videowrap").after($("#pollwrap"));
-
 //make it work with nanoscroll.js
 $("#mainpage").append("<div class='nano' id='maincontain'></div>");
 $("#maincontain").append("<div class='nano-content'></div>");
@@ -164,19 +107,14 @@ $("#maincontain .nano-content").append($("#mainpage > .container-fluid"));
 $("body").addClass("fluid");
 $("#usertheme").attr("href", "/css/themes/slate.css");
 $("#maincontain .nano-content").append($("#mainpage > .container"));
-
 $("#messagebuffer").addClass("nano-content");
 $("#messagebuffer").after("<div class='nano'></div>");
 $("#chatwrap .nano").append($("#messagebuffer"));
-
 $(".nano").nanoScroller();
-
 //middle draggable handle
 $("#mainpage").append("<div id='mHandle-left' class='mHandle'></div> <div id='mHandle-right' class='mHandle'></div><div id='mHandle-mid' class='mHandle'></div>");
 $("body").prepend("<div id='dragoverlay'><div class='l'></div><div class='r'></div><div id='handleWidget'></div></div>");
 $("#mainpage").append("<style id='splitRatio' split='77'>@media (min-width: 992px) {#mainpage > .nano {width: 77%;} #chatwrap {width: 22.9%;}}</style>");
-
-
 _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
 currentmedia = {istemp: false, location: 0, uid: 0, id: 0, seconds: 0, length: 0};
 playlistinfo = {length: 0};
@@ -243,39 +181,6 @@ function requeue (data) {
 	}
 //}
 //mediaUpdate2();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 //Massive thanks to ss7 for Video Time Display code.
 setvideotime = function() {
@@ -445,11 +350,8 @@ addClassToNameAndTimestamp: data.msgclass
 };
 }
 var skip = data.username === last.name;
-
 if(data.meta.addClass === "server-whisper")
 skip = true;
-
-
 if(data.msg.match(/^\s*<strong>\w+\s*:\s*<\/strong>\s*/))
 skip = false;
 if (data.meta.forceShowName)
@@ -458,7 +360,6 @@ skip = false;
 data.msg = execEmotes(data.msg);
  
 last.name = data.username;
-
 var div = $("<div/>");
 if (data.meta.addClass === "drink") {
 div.addClass("drink");
@@ -474,20 +375,11 @@ time.addClass(data.meta.addClass);
 }
 }
  
-
 var name = $("<span/>");
 if (!skip) {
 name.appendTo(div);
 }
-
-
-
-
-
 $("<strong/>").addClass("username clr_" + data.username).text(data.username + ": ").css("color", stringToColour(data.username)).appendTo(name);
-
-
-
 
 
 if (data.meta.modflair) 
@@ -780,7 +672,6 @@ $.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
 $.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
-$.getScript("//dl.dropbox.com/s/cbhvu7e4ezjd0qh/discord.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

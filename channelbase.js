@@ -20,9 +20,9 @@ console.log("sup yall");
 /*player skin*/
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
-$(".server-msg-reconnect").addClass("fa fa-plug");
 $("#videowrap").addClass("vjs-polyzor-skin");
-$(".server-msg-reconnect").text("Connected");
+$(".server-msg-reconnect").addClass("fa fa-plug");
+$(".server-msg-reconnect").text("");
 $("body").addClass("darktheme");
 $("#userlisttoggle").removeClass("glyphicon glyphicon-chevron-down pull-left pointer");
 $("#userlisttoggle").addClass("btn-default fa fa-users ch");
@@ -30,13 +30,13 @@ $("#userlisttoggle").text("");
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
 $(".container-fluid").append($("#footer"));//move footer into mainpage element
+$('#footer').children('.container').append('<p class="text-muted credit">Copyrights and trademarks for the shows and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. The author is not responsible for any contents linked or referred to from his pages, All CyTu.be does is link or embed content that was uploaded to popular Online Video hosting sites like Youtube.com / Google drive. All Google users signed a contract with the sites when they set up their accounts wich forces them not to upload illegal content.(<a href="https://www.lumendatabase.org/topics/14">DMCA Safe Harbor</a>)<h4><center><br>Theme By Bill</p>(<a href="https://github.com/BillTube/theme">Now on github!</a>)</center></h4>');
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
 $("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
 $("#connected").append($("#usercount"));//move user count into previously created div
 $("#connected").append( "<span id='connectedText'>&nbsp Logged in users</span>" );//add "Connected" after user count
 $("#userlisttoggle").after($("#emotelistbtn"));
 $("#main").after("<div id='videoinfo' class='section'></div>");//create box to contain video title, description, and playlist options.
-$('#footer').children('.container').append('<p class="text-muted credit">');
 $("#main").after($("#drinkbarwrap"));
 $("#videoinfo").append("<div class='textheader'></div><div id='videoinfohead'><span id='addedbyTEXT'>Queued by <span id='addedby'></span></span><div id='headbottom'><div id='headright'><div id='ss7time' title='--:--'>0:00</div><div id='videolength'></div><div id='progbar'></div></div></div></div><div id='videoopts'></div>");
 $(".navbar-header").after($("#currenttitle")); //move video title below video player
@@ -76,7 +76,7 @@ $("#upnext").append($("#plmeta"));
 $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
 $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
 $("#pldropdown").before($("#qlockbtn"));
-//$("#main").after($("#scroll-feature"));
+$("#main").after($("#scroll-feature"));
 $("<div class='indicator'><svg width='16px' height='12px'><polyline id='back' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline><polyline id='front' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline></svg></div>").appendTo('.navbar-header');
 $('.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
@@ -668,17 +668,22 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
-
-//channels
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
 $.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
+var LOADED = (typeof LOADED==="undefined") ? false : true;
+LOADED ? location.reload() : '';
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-53755606-1', 'auto');
+ga('send', 'pageview');
 
+var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
 
-//var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
-
-//selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
 $('#backg').css('background', 'url(' + selectBG + ')')
 var vplayer = videojs("ytapiplayer")
 vplayer.on('error', function(e){

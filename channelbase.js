@@ -670,7 +670,7 @@ function scrollerInit() {
   });
 
 //channels
-$.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
+$.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/XaekaiModules.js");
 
 var LOADED = (typeof LOADED==="undefined") ? false : true;

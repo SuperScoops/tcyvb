@@ -68,3 +68,138 @@ HTMLCollection.prototype.each=Array.prototype.each=NodeList.prototype.each=funct
 */
 if(!window[CHANNEL.name])window[CHANNEL.name]={};if(!$("#customSettingsStaging").length){$("<div/>").prop("id","customSettingsStaging").hide().insertAfter("#useroptions")}if(!window[CHANNEL.name].audioNotice){window[CHANNEL.name].audioNotice={};window[CHANNEL.name].audioNotice.Squee={timeSinceLast:0};window[CHANNEL.name].audioNotice.Poll={timeSinceLast:0};window[CHANNEL.name].audioNotice.Priv={timeSinceLast:0};window[CHANNEL.name].audioNotice.Video={timeSinceLast:0}}window[CHANNEL.name].audioNotice.typeNames={Squee:"Username",Poll:"Poll",Priv:"Private Message",Video:"Queued Video"};window[CHANNEL.name].audioNotice.pushNoticeChange=function(change){var type,id,silent;type=change.type;id=change.id;silent=change.silent;window[CHANNEL.name].audioNotice[type].id=id;window[CHANNEL.name].audioNotice[type].file=window[CHANNEL.name].audioNotice.choices[id];localStorage[CHANNEL.name+"_AudioNotice"+type+"ID"]=id;$("#AudioNotice"+this.typeNames[type].split(" ")[0]).remove();window[CHANNEL.name].audioNotice[type].audio=$("<audio>").prop("id","AudioNotice"+this.typeNames[type].split(" ")[0]).appendTo("body").attr("preload","auto").prop("volume",window[CHANNEL.name].audioNotice[type].volume).append($("<source>").attr("src",window[CHANNEL.name].audioNotice[type].file).attr("type","audio/ogg"));if(!silent){window[CHANNEL.name].audioNotice[type].audio[0].play();$("div.chat-msg-\\\\\\$server\\\\\\$:contains("+this.typeNames[type]+" Notification)").remove();window[CHANNEL.name].VirtualWhisper(this.typeNames[type]+" Notification Changed to: "+id)}};window[CHANNEL.name].audioNotice.pushVolume=function(change){var type,volume;type=change.type;volume=change.volume;if(volume=="up"){volume=(window[CHANNEL.name].audioNotice[type].volume*100+5)/100}else if(volume=="down"){volume=(window[CHANNEL.name].audioNotice[type].volume*100-5)/100}else{return console.error("ERROR: AudioNotice System: Volume must be 'up' or 'down'")}volume=Math.min(Math.max(volume,.05),1)||.6;window[CHANNEL.name].audioNotice[type].volume=volume;localStorage[CHANNEL.name+"_AudioNotice"+type+"Volume"]=Math.floor(volume*100);window[CHANNEL.name].audioNotice[type].audio.prop("volume",volume)[0].play();if(window[CHANNEL.name].audioNotice[type].indicator)window[CHANNEL.name].audioNotice[type].indicator.html(Math.floor(volume*100))};window[CHANNEL.name].audioNotice.toggle=function(type){window[CHANNEL.name].audioNotice[type].toggleState=!window[CHANNEL.name].audioNotice[type].toggleState;localStorage[CHANNEL.name+"_AudioNotice"+type+"Toggle"]=+window[CHANNEL.name].audioNotice[type].toggleState;if(window[CHANNEL.name].audioNotice[type].toggleButton)window[CHANNEL.name].audioNotice[type].toggleButton.toggleClass("label-default label-info");window[CHANNEL.name].audioNotice[type].panel.toggleClass("btn-danger btn-success")};window[CHANNEL.name].audioNotice.handler={Squee:function(data){var squee;if(!window[CHANNEL.name].audioNotice.Squee.toggleState){return}if(!CHANNEL.opts.chat_antiflood){console.info();return}if(Date.now()-window[CHANNEL.name].audioNotice.Squee.timeSinceLast<7e3)return;squee=$(".nick-highlight:not( .parsed )");if(!squee.length)return;squee.addClass("parsed");var start=Date.parse("2015-10-31T04:00:00Z"),end=Date.parse("2015-11-01T04:00:00Z"),current=Date.now();current>start&&end>current?function(){toot=new Audio("/skulltrumpet.wav");toot.volume=.33;toot.play()}():window[CHANNEL.name].audioNotice.Squee.audio[0].play();window[CHANNEL.name].audioNotice.Squee.timeSinceLast=Date.now()},Poll:function(data){if(!window[CHANNEL.name].audioNotice.Poll.toggleState)return;if(CLIENT.rank<CHANNEL.perms.pollvote)return;if(Date.now()-window[CHANNEL.name].audioNotice.Poll.timeSinceLast<36e4)return;window[CHANNEL.name].audioNotice.Poll.audio[0].play();window[CHANNEL.name].audioNotice.Poll.timeSinceLast=Date.now()},Priv:function(data){if(!window[CHANNEL.name].audioNotice.Priv.toggleState)return;if(data.username==CLIENT.name)return;if($(document.activeElement).hasClass("pm-input"))return;if(Date.now()-window[CHANNEL.name].audioNotice.Priv.timeSinceLast<18e4)return;window[CHANNEL.name].audioNotice.Priv.audio[0].play();window[CHANNEL.name].audioNotice.Priv.timeSinceLast=Date.now();$("div.chat-msg-\\\\\\$server\\\\\\$:contains(Private Message Notification)").remove();window[CHANNEL.name].VirtualWhisper("Private Message Notification")},Video:function(data){var addedby;if(!window[CHANNEL.name].audioNotice.Video.toggleState)return;if(CLIENT.rank<CHANNEL.perms.seeplaylist)return;addedby=playlist(true).addedby==CLIENT.name;if(addedby&&window[CHANNEL.name].audioNotice.Video.last){window[CHANNEL.name].audioNotice.Video.timeSinceLast=Date.now();return}window[CHANNEL.name].audioNotice.Video.last=false;if(!addedby)return;if(Date.now()-window[CHANNEL.name].audioNotice.Video.timeSinceLast<6e5)return;window[CHANNEL.name].audioNotice.Video.audio[0].play();window[CHANNEL.name].audioNotice.Video.timeSinceLast=Date.now();window[CHANNEL.name].audioNotice.Video.last=true;$("div.chat-msg-\\\\\\$server\\\\\\$:contains(Video Notification)").remove();window[CHANNEL.name].VirtualWhisper("Video Notification: Your video is now playing!")}};(function(){if(window[CHANNEL.name].audioNotice.initialized)return;window[CHANNEL.name].audioNotice.initialized=true;window[CHANNEL.name].audioNotice["Squee"].toggleState=true;window[CHANNEL.name].audioNotice["Poll"].toggleState=true;window[CHANNEL.name].audioNotice["Priv"].toggleState=true;window[CHANNEL.name].audioNotice["Video"].toggleState=true;window[CHANNEL.name].audioNotice["Squee"].id="squee";window[CHANNEL.name].audioNotice["Poll"].id="votingpoll";window[CHANNEL.name].audioNotice["Priv"].id="uhoh";window[CHANNEL.name].audioNotice["Video"].id="fairywand";window[CHANNEL.name].audioNotice["Squee"].volume=.6;window[CHANNEL.name].audioNotice["Poll"].volume=.3;window[CHANNEL.name].audioNotice["Priv"].volume=.35;window[CHANNEL.name].audioNotice["Video"].volume=.35;if(!!window[CHANNEL.name].audioLibrary){window[CHANNEL.name].audioNotice.choices=window[CHANNEL.name].audioLibrary.squees}else{window[CHANNEL.name].audioNotice.choices={squee:"https://resources.pink.horse/sounds/squee.ogg",votingpoll:"https://resources.pink.horse/sounds/votingpoll.ogg",uhoh:"https://resources.pink.horse/sounds/uhoh.ogg",fairywand:"https://resources.pink.horse/sounds/fairy_wand.ogg"}}if(window[CHANNEL.name]&&window[CHANNEL.name].modulesOptions&&window[CHANNEL.name].modulesOptions.audioNotice){var choices=Object.keys(window[CHANNEL.name].modulesOptions.audioNotice.choices);var notices=Object.keys(window[CHANNEL.name].modulesOptions.audioNotice.notices);for(var i=choices.length-1;i>=0;i--){window[CHANNEL.name].audioNotice["choices"][choices[i]]=window[CHANNEL.name].modulesOptions.audioNotice.choices[choices[i]]}for(var i=notices.length-1;i>=0;i--){window[CHANNEL.name].audioNotice[notices[i]]["id"]=window[CHANNEL.name].modulesOptions.audioNotice.notices[notices[i]]}}var types=Object.keys(window[CHANNEL.name].audioNotice.typeNames);if(typeof Storage!=="undefined"){for(var i=types.length-1;i>=0;i--){if(localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"Toggle"]!=undefined){window[CHANNEL.name].audioNotice[types[i]].toggleState=parseInt(localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"Toggle"])}if(localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"ID"]!=undefined){window[CHANNEL.name].audioNotice[types[i]].id=localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"ID"]}if(localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"Volume"]!=undefined){window[CHANNEL.name].audioNotice[types[i]].volume=parseInt(localStorage[CHANNEL.name+"_AudioNotice"+types[i]+"Volume"])/100||.6}window[CHANNEL.name].audioNotice.pushNoticeChange({type:types[i],id:window[CHANNEL.name].audioNotice[types[i]].id,silent:true})}}else{console.log("ERROR: AudioNotice System: Local storage not supported by this browser.")}window[CHANNEL.name].audioNotice.Squee.toggleButton=$("<span/>").html('').prop("id","AudioNoticeSqueeToggle").attr("title","Toggle Username Audio Notices").addClass("pointer fa fa-bell").click(function(){window[CHANNEL.name].audioNotice.toggle("Squee")}).appendTo($("#chatwrap"));if(!window[CHANNEL.name].audioNotice.Squee.toggleState){window[CHANNEL.name].audioNotice.Squee.toggleButton.removeClass("label-info").addClass("")}socket.on("chatMsg",function(data){return window[CHANNEL.name].audioNotice.handler["Squee"](data)});socket.on("newPoll",function(data){return window[CHANNEL.name].audioNotice.handler["Poll"](data)});socket.on("pm",function(data){return window[CHANNEL.name].audioNotice.handler["Priv"](data)});socket.on("changeMedia",function(data){return window[CHANNEL.name].audioNotice.handler["Video"](data)});console.log("INFO: AudioNotice System Initialized");window[CHANNEL.name].audioNotice.controls=$('<div id="AudioNoticeControls" class="customSettings" data-title="Audio Notifications Settings"/>').appendTo("#customSettingsStaging");for(var i=0;i<types.length;i++){var TYPE=types[i];(function(){var form=$("<form>").prop("action","javascript:void(0)").addClass("form-horizontal");var wrapper=$("<div>").addClass("form-group").prop("id","AudioNoticeControls"+TYPE).appendTo(form);window[CHANNEL.name].audioNotice.controls.append(form);$("<span>").addClass("label label-info col-sm-2").text(window[CHANNEL.name].audioNotice.typeNames[TYPE]+" Notice").appendTo(wrapper);var buttongroup=$("<div>").addClass("btn-group col-sm-4").attr("data-control",TYPE).appendTo(wrapper);var toggle=$("<button/>").prop("id","AudioNoticeControls"+TYPE+"Toggle").addClass("btn btn-sm btn-success").attr("title","Toggle "+window[CHANNEL.name].audioNotice.typeNames[TYPE]+" Notices").html('<span class="glyphicon glyphicon-bell"></span>').click(function(){window[CHANNEL.name].audioNotice.toggle($(this).parent().data().control)}).prependTo(buttongroup);window[CHANNEL.name].audioNotice[TYPE].panel=toggle;if(!window[CHANNEL.name].audioNotice[TYPE].toggleState)toggle.toggleClass("btn-success btn-danger");var sounds=$("<div/>").addClass("btn-group").prop("id","AudioNoticeControls"+TYPE+"Sounds").appendTo(buttongroup);$("<button/>").prop("id","AudioNoticeControls"+TYPE+"VolumeDown").addClass("btn btn-sm btn-default").attr("title",window[CHANNEL.name].audioNotice.typeNames[TYPE]+" Volume Down").click(function(){window[CHANNEL.name].audioNotice.pushVolume({type:$(this).parent().data().control,volume:"down"})}).html('<span class="glyphicon glyphicon-volume-down"></span>').appendTo(buttongroup);window[CHANNEL.name].audioNotice[TYPE].indicator=$("<button/>").prop("id","AudioNoticeControls"+TYPE+"Indicator").addClass("btn btn-sm btn-default").attr("title",window[CHANNEL.name].audioNotice.typeNames[TYPE]+" Volume").html(window[CHANNEL.name].audioNotice[TYPE].volume*100).appendTo(buttongroup);$("<button/>").prop("id","AudioNoticeControls"+TYPE+"VolumeUp").addClass("btn btn-sm btn-default").attr("title",window[CHANNEL.name].audioNotice.typeNames[TYPE]+" Volume Up").click(function(){window[CHANNEL.name].audioNotice.pushVolume({type:$(this).parent().data().control,volume:"up"})}).html('<span class="glyphicon glyphicon-volume-up"></span>').appendTo(buttongroup);$("<button/>").prop("id","AudioNoticeControls"+TYPE+"Play").addClass("btn btn-sm btn-default").attr("title","Play Notification").click(function(){window[CHANNEL.name].audioNotice[$(this).parent().data().control].audio[0].play()}).html('<span class="glyphicon glyphicon-play"></span>').appendTo(buttongroup);$("<button/>").addClass("btn btn-default btn-sm dropdown-toggle").attr("type","button").attr("href","javascript:void(0)").attr("data-toggle","dropdown").html("<span class='glyphicon glyphicon-music'></span> Sound <span class='caret'></span>").appendTo(sounds);var sound_content=$("<ul/>").addClass("dropdown-menu").addClass("columns").attr("role","menu").appendTo(sounds);var keys=Object.keys(window[CHANNEL.name].audioNotice.choices);for(var i=0;i<keys.length;i++){key=keys[i];var populate_list=$("<li/>").appendTo(sound_content);(function(i){$("<a/>").text(key).attr("href","javascript:void(0)").attr("data-notice",key).attr("data-type",TYPE).click(function(){console.log($(this).data().type,$(this).data().notice);window[CHANNEL.name].audioNotice.pushNoticeChange({type:$(this).data().type,id:$(this).data().notice,silent:false})}).appendTo(populate_list)})(i)}})()}})();
 
+/*
+- NND-style Chat script for Cytu.be
+- written by zeratul (github.com/zeratul0)
+- version 1.01
+- for v4c
+- (still in testing, some things will NOT work as they should)
+*/
+
+(function() {
+    
+    //remove previous NND CSS elements if they exist
+    $('.head-NNDCSS').remove();
+    
+    /*create CSS for messages and modal element, this will probably become an external sheet in the future
+    - this is NOT meant to be a one-time thing, as it gets removed each time this script is run,
+    - so it can be updated without making users refresh
+    */
+    $('<style />', {
+        'class':'head-NNDCSS',
+        text:".videoText {color: white;font-size: 2em;position: absolute;z-index: 1;cursor: default;white-space:nowrap;opacity:0.7;font-family: 'Meiryo', sans-serif;letter-spacing: 4px;user-select: none;text-shadow: 0 -1px #000, 1px 0 #000, 0 1px #000, -1px 0 #000;pointer-events: none}"+
+            ".videoText.moving {transition: right 7.5s linear, left 7.5s linear}"+
+            ".videoText.greentext {color: #789922}"+
+            ".videoText img {max-height: 64px;max-width: 64px}"+
+            ".videoText.shout {color: #f00}"+
+            ".modal .left-warning {float: left;padding: 10px 12px;font-size: 13px;color: #ff8f8f}"+
+            ".modal .modal-caption {font-size: 13px;text-indent: 35px;color: #8f9cad}"+
+            "#nndSettingsWrap .radio label {display: block;color: #c4ccd8}"+
+            "#nndSettingsWrap #nnd-maxmsgs {margin: 10px 0;width: 25%;min-width: 200px}"+
+            ".modal-subheader {font-size: 16px;border-bottom: 1px solid #212123;margin-left: -10px;padding: 10px 0 0 2px}"+
+            "#nndSettingsModal .subfooter {text-align: center;color: #757575}"+
+            "#nndSettingsModal .subfooter .by {padding-right: 10px;border-right: 1px solid #252525}"+
+            "#nndSettingsModal .subfooter .ver {padding-left: 10px;border-left: 1px solid #4e4e4e}"
+    }).appendTo('head');
+    
+    console.debug('NND Chat: CSS added to page header');
+    //on the other hand, we don't want this persistent stuff to run more than once..
+    if (CLIENT.runNND) {
+        console.error('NND Chat script attempted to load, but it looks like it has already been loaded!');
+        return;
+    }
+    CLIENT.runNND = true;
+        
+    window.nnd = {
+        'enabled':false, //enabled? self-explanatory
+        'MAX':100, //maximum amount of messages allowed on screen before the oldest messages are removed
+        'offsetType':0, //0: position based on fontsize and player height; 1: random %
+        'fromRight':true, //move messages from right? if false, moves from left instead
+        '_fn': {
+            'init':()=>{nnd['enabled'] = false;nnd['MAX'] = 100;nnd['offsetType'] = 0;nnd['fromRight'] = true;nnd._fn.updateModal();nnd._fn.save()},
+            'getopts':()=>{var tmp = {};for (var i in window.nnd) if (!(/^\_/).test(i)) tmp[i] = window.nnd[i]; return tmp},
+            'save':()=>localStorage.setItem(CHANNEL.name + '_nndOptions', JSON.stringify(window.nnd._fn.getopts())),
+            'load':()=>{var tmp = JSON.parse(localStorage.getItem(CHANNEL.name+'_nndOptions'));if (tmp === null || tmp === undefined) {nnd._fn.init();console.debug('NND settings not found, using defaults and saving them');return}else {for (var i in tmp) {if (nnd.hasOwnProperty(i) && !(/^\_/).test(i)) nnd[i] = tmp[i]}nnd._fn.save();nnd._fn.updateModal()}},
+            'updateModal':()=>{$('#nnd-enable').prop('checked', nnd.enabled);$('#nnd-offsettype-' + nnd.offsetType).prop('checked', true);$('#nnd-fromright-' + nnd.fromRight).prop('checked', true);$('#nnd-maxmsgs').attr('placeholder', nnd.MAX); $('#nnd-maxmsgs').val(nnd.MAX)},
+            'saveFromModal':()=>{nnd['enabled'] = $('#nnd-enable').prop('checked'); if (!nnd['enabled']) $('.videoText').remove(); if ($('#nnd-offsettype-0').prop('checked')) nnd['offsetType'] = 0; else if ($('#nnd-offsettype-1').prop('checked')) nnd['offsetType'] = 1; if ($('#nnd-fromright-true').prop('checked')) nnd['fromRight'] = true; else if ($('#nnd-fromright-false').prop('checked')) nnd['fromRight'] = false; if (!isNaN(parseInt($('#nnd-maxmsgs').val())) && parseInt($('#nnd-maxmsgs').val()) >= 1) {var x = parseInt($('#nnd-maxmsgs').val()); nnd['MAX'] = x; $('#nnd-maxmsgs').attr('placeholder', x);$('#nnd-maxmsgs').val(x)} else {$('#nnd-maxmsgs').val(nnd['MAX']); $('#nnd-maxmsg').attr('placeholder', nnd['MAX'])} nnd._fn.save()}
+        },
+        '_ver':'1.01'
+    };
+
+    //init: sets the window's nnd options to their defaults, then calls _fn.updateModal and _fn.save
+    //getopts: returns the window's current nnd object excluding any of its keys beginning with "_"
+    //save: stores the return value of getopts as a JSON string in localStorage, in an item named "X_nndOptions" where X is CHANNEL.name
+    //load: attempts to grab [CHANNEL.name]_nndOptions from localStorage and replaces the current window's nnd options with them. finally, calls _fn.save then _fn.updateModal. only replaces properties that are found within the current nnd object, excludes keys beginning with "_". calls _fn.init if the localStorage settings are empty or null.
+    //updateModal: updates the modal window elements to reflect the current nnd options.
+    //saveFromModal: sets the current window's nnd object properties based on the options selected in the modal window, and calls _fn.save
+
+    //create modal element, insert before #pmbar
+    $('<div class="fade modal"id=nndSettingsModal aria-hidden=true role=dialog style=display:none tabindex=-1><div class=modal-dialog><div class=modal-content><div class=modal-header><button class=close data-dismiss=modal aria-hidden=true>×</button><h4>NND Chat Settings: <span id=modal-nnd-roomname>'+CHANNEL.name+'</span></h4></div><div class=modal-body id=nndSettingsWrap><div class=modal-option><div class=checkbox><label for=nnd-enable><input id=nnd-enable type=checkbox> Enable NND Chat</label><div class=modal-caption>Enable Nico Nico Douga-style chat messages. Places chat messages on the currently playing video and scrolls them to the opposite side.</div></div></div><div class=modal-option><div class=modal-subheader>Message Offset</div><div class=radio><label for=nnd-offsettype-0><input id=nnd-offsettype-0 type=radio name=offsettype> Random position based on font size of message and video player height</label><br><label for=nnd-offsettype-1><input id=nnd-offsettype-1 type=radio name=offsettype> Random percent from top of video player</label><div class=modal-caption>Determines how the position of the chat message is generated.</div></div></div><div class=modal-option><div class=modal-subheader>Message Direction</div><div class=radio><label for=nnd-fromright-true><input id=nnd-fromright-true type=radio name=fromright> from Right to Left</label><br><label for=nnd-fromright-false><input id=nnd-fromright-false type=radio name=fromright> from Left to Right</label><div class=modal-caption>Determines where new messages will start and end.</div></div></div><div class=modal-option><div class=modal-subheader>Maximum Messages</div><input id=nnd-maxmsgs type=text class=form-control placeholder=100><div class=modal-caption>Maximum amount of messages allowed on screen at once before the oldest messages are removed. A large amount of messages may cause lag. Default 100.</div></div></div><div class=modal-footer><div class=left-warning>Settings are not applied until you click Save.</div><button class="btn btn-primary"data-dismiss=modal type=button onclick=nnd._fn.saveFromModal()>Save</button> <button class="btn btn-primary"data-dismiss=modal type=button onclick=nnd._fn.updateModal()>Close</button><div class="subfooter"><span class="by">NND chat created by zeratul</span><span class="ver">version '+nnd._ver+'</span></div></div></div></div></div>').insertBefore('#pmbar');
+
+    //load the user's options then update the modal element
+    nnd._fn.load();
+    nnd._fn.updateModal();
+
+    //create the button in #leftcontrols. toggles the NND Chat modal window when clicked
+    $('#leftcontrols').append($('<button/>',{id:'toggleNND','class':'btn btn-default btn-sm',html:'<span class="glyphicon glyphicon-cog"></span> NND Chat Settings',click:()=>$('#nndSettingsModal').modal()}));
+
+    //create .videochatContainer which is basically an invisible container element. this holds the chat messages that will be scrolling by
+    //TODO: maybe there's a better way to handle messages if "pointer-events: none" is used and the container is given 100%/100% size?
+    $('.embed-responsive').prepend($('<div/>', {
+        'class': 'videochatContainer'
+    }));
+
+    //once the message reaches the end of its CSS transition, remove it.
+    //attached to #main just in case something happens with the container
+    $('#main').on('transitionend', '.videochatContainer .videoText', function() {$(this).remove()});
+
+    //attach addScrollingMessage to the chatMsg socket event
+    //ignore messages sent by [server] and, because this was initially made for /r/v4c, v4cbot as well
+    socket.on('chatMsg', function(data) {
+        if (IGNORED.indexOf(data.username) > -1) return;
+        if (window.nnd.enabled && data.username.toLowerCase() !== '[server]' && data.username.toLowerCase() !== 'v4cbot') {
+            if (!data.meta['addClass'])
+                data.meta['addClass'] = '';
+            addScrollingMessage(data.msg, data.meta.addClass);
+        }
+    });
+
+    //save user's settings on page unload so they are persistent
+    $(window).unload(function() {window.nnd._fn.save()});
+    
+    console.debug('LOADED: NND-style Chat script for Cytu.be written by zeratul. Version '+nnd._ver);
+
+})();
+
+//the magic
+//also ignores messages beginning with $
+//TODO: allow users to disable emotes in these messages
+function addScrollingMessage(message, extraClass) {
+    if (typeof window.nnd === "undefined") return;
+    var opts = window.nnd;
+    if (opts.MAX < 1 || isNaN(parseInt(opts.MAX))) opts.MAX = window.nnd.MAX = 100;
+    if (opts.enabled && $('#ytapiplayer')[0]) {
+        if (message !== null && typeof message === "string" && message.length > 0 && !(/^\$/.test(message))) {
+            var topOffset = "0px";
+            var frm = 'right';
+            if (message.length > 240) message = message.substring(0,240);
+            if (!opts.fromRight) frm = 'left';
+            while ($('.videoText').length >= opts.MAX && opts.MAX >= 1) $('.videoText').eq(0).remove();
+            var fontSize = Math.random() * (48.0 - 24.0) + 24.0;
+            if (opts.offsetType === 1) topOffset = (Math.random() * 89) + '%'
+            else {
+                topOffset = (fontSize * Math.floor(Math.random() * (Math.floor($('#ytapiplayer').height() / fontSize)))) + 'px';
+                if (opts.offsetType < 0 || opts.offsetType > 1) {
+                    console.error('NNDchat: Unknown offsetType '+opts.offsetType+', reverting to 0');
+                    window.nnd.offsetType = 0;
+                }
+            }
+            var $txt = $('<div/>', {'class': 'videoText '+extraClass,style: 'visibility: hidden; top:'+topOffset+'; font-size:'+fontSize+'px'}).append(message);
+            $('.videochatContainer').append($txt);
+            $txt.css(frm, (0 - $txt.width())+'px');
+            $txt.addClass('moving');
+            $txt.css('visibility', 'visible');
+            $txt.css(frm, $('#ytapiplayer').width()+'px');
+        }
+    } else return;
+}

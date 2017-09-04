@@ -20,6 +20,7 @@ console.log("sup yall");
 /*player skin*/
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
+$(".server-msg-reconnect").addClass("fa fa-plug");
 $("#videowrap").addClass("vjs-polyzor-skin");
 $(".server-msg-reconnect").text("Connected");
 $("body").addClass("darktheme");
@@ -667,7 +668,8 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
-$.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
+
+//channels
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/XaekaiModules.js");
 

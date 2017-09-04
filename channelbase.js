@@ -76,7 +76,7 @@ $("#upnext").append($("#plmeta"));
 $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
 $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
 $("#pldropdown").before($("#qlockbtn"));
-$("#main").after($("#scroll-feature"));
+//$("#main").after($("#scroll-feature"));
 $("<div class='indicator'><svg width='16px' height='12px'><polyline id='back' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline><polyline id='front' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline></svg></div>").appendTo('.navbar-header');
 $('.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
@@ -669,13 +669,11 @@ function scrollerInit() {
 	scrollQueue();
   });
 
+//channels
+$.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
+$.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
+$.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/XaekaiModules.js");
 
-var LOADED = (typeof LOADED==="undefined") ? false : true;
-LOADED ? location.reload() : '';
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-});
 
 var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
 

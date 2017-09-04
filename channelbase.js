@@ -675,9 +675,9 @@ $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/XaekaiModules.js");
 
 
-var bgColorArray = [],
+//var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
 
-selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+//selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
 $('#backg').css('background', 'url(' + selectBG + ')')
 var vplayer = videojs("ytapiplayer")
 vplayer.on('error', function(e){

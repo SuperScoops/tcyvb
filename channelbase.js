@@ -20,9 +20,9 @@ console.log("sup yall");
 /*player skin*/
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
 $('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
-//$(".server-msg-reconnect").addClass("fa fa-plug");
+$(".server-msg-reconnect").addClass("");
 $("#videowrap").addClass("vjs-polyzor-skin");
-//$(".server-msg-reconnect").text("Connected");
+$(".server-msg-reconnect").text("");
 $("body").addClass("darktheme");
 $("#userlisttoggle").removeClass("glyphicon glyphicon-chevron-down pull-left pointer");
 $("#userlisttoggle").addClass("btn-default fa fa-users ch");

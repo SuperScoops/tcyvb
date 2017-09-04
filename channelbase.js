@@ -668,7 +668,6 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
-$.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
 $.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");

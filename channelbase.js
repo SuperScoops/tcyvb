@@ -1,6 +1,6 @@
 /*
 |Thanks to: Kuer, Xaekai[xaemae], ss7(supersaw7) and kenblu24
-|Theme by BILL(2) , You can find me on my discord channel discord.gg/fwadWd9
+|Theme by BILL(2) 
 |You are free to use (and edit) this theme but leave the credits in place for everyone involved.
 */
 
@@ -36,7 +36,6 @@ $("#userlisttoggle").text("");
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
 $(".container-fluid").append($("#footer"));//move footer into mainpage element
-$('#footer').children('.container').append('<p class="text-muted credit">Copyright © 2013-2017 Calvin Montgomery</center></h4>');
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
 $("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
 $("#connected").append($("#usercount"));//move user count into previously created div

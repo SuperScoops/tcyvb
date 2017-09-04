@@ -1,9 +1,3 @@
-/*
-|Thanks to: Kuer, Xaekai[xaemae], ss7(supersaw7) and kenblu24
-|Theme by BILL(2) 
-|You are free to use (and edit) this theme but leave the credits in place for everyone involved.
-*/
-
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);

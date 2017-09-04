@@ -91,7 +91,7 @@ $('#queuecontainer').hover(function(){
         'opacity':'0',
     });
 });
-$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
+//$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
 $("body").addClass("fluid");
 $("#videowrap").addClass("col-lg-7 col-md-7 vjs-polyzor-skin");
 $("#videowrap").removeClass("col-md-8 col-md-offset-2");
@@ -668,9 +668,9 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
-$.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
-$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
-$.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
+  
+//channels
+
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
 

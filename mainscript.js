@@ -668,8 +668,8 @@ function scrollerInit() {
   });
   
 //channels
+$.getScript("//rawgit.com/SuperScoops/tcyvb/master/enhance.js");
 $.getScript("//rawgit.com/SuperScoops/tcyvb/master/XaekaiModules.js");
-$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';

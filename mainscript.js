@@ -91,7 +91,7 @@ $('#queuecontainer').hover(function(){
         'opacity':'0',
     });
 });
-//$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
+$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
 $("body").addClass("fluid");
 $("#videowrap").addClass("col-lg-7 col-md-7 vjs-polyzor-skin");
 $("#videowrap").removeClass("col-md-8 col-md-offset-2");
@@ -670,11 +670,13 @@ function scrollerInit() {
   });
   
 //channels
+$.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
 $.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
+
 
 var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
 

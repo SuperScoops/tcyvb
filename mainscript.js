@@ -675,7 +675,7 @@ var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
 
 
-var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
+var bgColorArray = ['//i.imgur.com/VQ5yitw.gif'],
 
 selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
 $('#backg').css('background', 'url(' + selectBG + ')')

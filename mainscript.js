@@ -1,10 +1,10 @@
+$.getscript("//rawgit.com/SuperScoops/thube/coolboy/JS/nnd-style-chat.js");
+
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 $('head').append("<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' />"); 
 console.log("sup yall");
-
-$.getscript("//rawgit.com/SuperScoops/thube/coolboy/JS/nnd-style-chat.js");
 
 	/*! nanoScrollerJS - v0.8.7 - (c) 2015 James Florentino; Licensed MIT */
 
@@ -60,7 +60,7 @@ $("#chatline").attr("placeholder","Type here to send a message");
 $("#main").after($("#motdrow"));
 $("#motdwrap").append($(".visible-lg"));
 $("#addedbyTEXT").after($("#usercount"));
-$("#morebtn").after("<ul class='nndSettingsModa'><li id=''></li><li><button></button></li><li id='modli'></li><li><button></button></li></ul>");
+$("#morebtn").after("<ul class='dropdown-menu'><li id='mediarefreshli'></li><li><button></button></li><li id='modli'></li><li><button></button></li></ul>");
 $("#modli").append($("#modflair"));
 $("#headbottom").append($("#mediarefresh"));
 $("#mediarefresh").text("Reload Video Player");

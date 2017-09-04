@@ -120,7 +120,6 @@ $("#pldropdown").before($("#qlockbtn"));
 
 $.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
 $.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
-$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 
 $('#queuecontainer').hover(function(){
     $('#pllength').css({

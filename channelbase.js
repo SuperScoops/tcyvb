@@ -1,3 +1,9 @@
+/*
+|Thanks to: Kuer, Xaekai[xaemae], ss7(supersaw7) and kenblu24
+|Theme by BILL(2) , You can find me on my discord channel discord.gg/fwadWd9
+|You are free to use (and edit) this theme but leave the credits in place for everyone involved.
+*/
+
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
@@ -91,7 +97,7 @@ $('#queuecontainer').hover(function(){
         'opacity':'0',
     });
 });
-//$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
+$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
 $("body").addClass("fluid");
 $("#videowrap").addClass("col-lg-7 col-md-7 vjs-polyzor-skin");
 $("#videowrap").removeClass("col-md-8 col-md-offset-2");
@@ -672,6 +678,7 @@ $.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
 $.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
+$.getScript("//dl.dropbox.com/s/cbhvu7e4ezjd0qh/discord.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

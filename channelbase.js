@@ -76,7 +76,7 @@ $("#upnext").append($("#plmeta"));
 $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
 $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
 $("#pldropdown").before($("#qlockbtn"));
-$("#main").after($("#scroll-feature"));
+//$("#main").after($("#scroll-feature"));
 $("<div class='indicator'><svg width='16px' height='12px'><polyline id='back' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline><polyline id='front' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline></svg></div>").appendTo('.navbar-header');
 $('.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
@@ -91,7 +91,7 @@ $('#queuecontainer').hover(function(){
         'opacity':'0',
     });
 });
-$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
+//$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
 $("body").addClass("fluid");
 $("#videowrap").addClass("col-lg-7 col-md-7 vjs-polyzor-skin");
 $("#videowrap").removeClass("col-md-8 col-md-offset-2");
@@ -668,20 +668,17 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
+
+//channels
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
 $.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
-var LOADED = (typeof LOADED==="undefined") ? false : true;
-LOADED ? location.reload() : '';
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-ga('create', 'UA-53755606-1', 'auto');
-ga('send', 'pageview');
+$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
+$.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
 
-var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
 
-selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
+//var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
+
+//selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
 $('#backg').css('background', 'url(' + selectBG + ')')
 var vplayer = videojs("ytapiplayer")
 vplayer.on('error', function(e){

@@ -1,10 +1,9 @@
-//force https for videos from googs
-if (window.location.protocol != "https:")
-    window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
+/*
+|Thanks to: Kuer, Xaekai[xaemae], ss7(supersaw7)
+|original file by kenblu24 , edited by bill
+*/
 $('head').append("<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' />"); 
-console.log("sup yall");
-
-
+console.log("ranscript");
 
 	/*! nanoScrollerJS - v0.8.7 - (c) 2015 James Florentino; Licensed MIT */
 
@@ -18,28 +17,38 @@ console.log("sup yall");
 	 */
 	!function(){this.ResizeSensor=function(e,t){function s(){this.q=[],this.add=function(e){this.q.push(e)};var e,t;this.call=function(){for(e=0,t=this.q.length;t>e;e++)this.q[e].call()}}function i(e,t){return e.currentStyle?e.currentStyle[t]:window.getComputedStyle?window.getComputedStyle(e,null).getPropertyValue(t):e.style[t]}function o(e,t){if(e.resizedAttached){if(e.resizedAttached)return void e.resizedAttached.add(t)}else e.resizedAttached=new s,e.resizedAttached.add(t);e.resizeSensor=document.createElement("div"),e.resizeSensor.className="resize-sensor";var o="position: absolute; left: 0; top: 0; right: 0; bottom: 0; overflow: scroll; z-index: -1; visibility: hidden;",n="position: absolute; left: 0; top: 0;";e.resizeSensor.style.cssText=o,e.resizeSensor.innerHTML='<div class="resize-sensor-expand" style="'+o+'"><div style="'+n+'"></div></div><div class="resize-sensor-shrink" style="'+o+'"><div style="'+n+' width: 200%; height: 200%"></div></div>',e.appendChild(e.resizeSensor),{fixed:1,absolute:1}[i(e,"position")]||(e.style.position="relative");var r,l,d=e.resizeSensor.childNodes[0],c=d.childNodes[0],h=e.resizeSensor.childNodes[1],a=(h.childNodes[0],function(){c.style.width=d.offsetWidth+10+"px",c.style.height=d.offsetHeight+10+"px",d.scrollLeft=d.scrollWidth,d.scrollTop=d.scrollHeight,h.scrollLeft=h.scrollWidth,h.scrollTop=h.scrollHeight,r=e.offsetWidth,l=e.offsetHeight});a();var f=function(){e.resizedAttached&&e.resizedAttached.call()},u=function(e,t,s){e.attachEvent?e.attachEvent("on"+t,s):e.addEventListener(t,s)},z=function(){(e.offsetWidth!=r||e.offsetHeight!=l)&&f(),a()};u(d,"scroll",z),u(h,"scroll",z)}var n=Object.prototype.toString.call(e),r="[object Array]"===n||"[object NodeList]"===n||"[object HTMLCollection]"===n||"undefined"!=typeof jQuery&&e instanceof jQuery||"undefined"!=typeof Elements&&e instanceof Elements;if(r)for(var l=0,d=e.length;d>l;l++)o(e[l],t);else o(e,t);this.detach=function(){if(r)for(var t=0,s=e.length;s>t;t++)ResizeSensor.detach(e[t]);else ResizeSensor.detach(e)}},this.ResizeSensor.detach=function(e){e.resizeSensor&&(e.removeChild(e.resizeSensor),delete e.resizeSensor,delete e.resizedAttached)}}();
 /*player skin*/
-$('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/base.css?build=@version.MinorRevision' />");
-$('head').append("<link rel='stylesheet' href='//rawgit.com/BillTube/theme/gh-pages/polyzor.css' />");
+$('head').append("<link rel='stylesheet' href='//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/polyzor-skin.min.css' />");
 $("#videowrap").addClass("vjs-polyzor-skin");
-$(".server-msg-reconnect").addClass("fa fa-plug");
-$(".server-msg-reconnect").text("");
+
+/*TEMP TEMP TEMP*/
 $("body").addClass("darktheme");
 $("#userlisttoggle").removeClass("glyphicon glyphicon-chevron-down pull-left pointer");
-$("#userlisttoggle").addClass("btn-default fa fa-users ch");
+$("#userlisttoggle").addClass("btn-default fa fa-users");
 $("#userlisttoggle").text("");
+
+//site and channel descriptors
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
 $(".container-fluid").append($("#footer"));//move footer into mainpage element
-$('#footer').children('.container').append('<p class="text-muted credit">Copyrights and trademarks for the shows and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. The author is not responsible for any contents linked or referred to from his pages, All CyTu.be does is link or embed content that was uploaded to popular Online Video hosting sites like Youtube.com / Google drive. All Google users signed a contract with the sites when they set up their accounts wich forces them not to upload illegal content.(<a href="https://www.lumendatabase.org/topics/14">DMCA Safe Harbor</a>)<h4><center><br>Theme By Bill</p>(<a href="https://github.com/BillTube/theme">Now on github!</a>)</center></h4>');
+$('#footer').children('.container').append('<p class="text-muted credit">Copyrights and trademarks for the shows and other promotional materials are held by their respective owners and their use is allowed under the fair use clause of the Copyright Law. The author is not responsible for any contents linked or referred to from his pages, All CyTu.be does is link or embed content that was uploaded to popular Online Video hosting sites like Youtube.com / Google drive. All Google users signed a contract with the sites when they set up their accounts wich forces them not to upload illegal content.(<a href="https://www.lumendatabase.org/topics/14">DMCA Safe Harbor</a>)<br>Theme By Bill</p>');
+
+//$(".vjs-error-display").append($("#voteskip"));
+//chat elements
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
-$("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
-$("#connected").append($("#usercount"));//move user count into previously created div
-$("#connected").append( "<span id='connectedText'>&nbsp Logged in users</span>" );//add "Connected" after user count
+//$("#userlist").prepend($("#chatheader"));//move chat header(user toggles) to userlist
+//$("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
+//$("#connected").append($("#usercount"));//move user count into previously created div
+//$("#connected").append( "<span id='connectedText'>&nbsp Logged in Viewers</span>" );//add "Connected" after user count
+//$("#chatwrap").append($("#userlisttoggle"));//move user count to chat wrap element
 $("#userlisttoggle").after($("#emotelistbtn"));
-$("#main").after("<div id='videoinfo' class='section'></div>");//create box to contain video title, description, and playlist options.
+//below video
 $("#main").after($("#drinkbarwrap"));
+$("#main").after($("#motdrow"));
+$("#main").after("<div id='videoinfo' class='section'></div>");//create box to contain video title, description, and playlist options.
+
+
 $("#videoinfo").append("<div class='textheader'></div><div id='videoinfohead'><span id='addedbyTEXT'>Queued by <span id='addedby'></span></span><div id='headbottom'><div id='headright'><div id='ss7time' title='--:--'>0:00</div><div id='videolength'></div><div id='progbar'></div></div></div></div><div id='videoopts'></div>");
-$(".navbar-header").after($("#currenttitle")); //move video title below video player
+$(".navbar-brand").after($("#currenttitle")); //move video title below video player
 $("#headbottom").append("<button id='addmedia' title='Add Media' class='headbtn headbtnleft'></button>");
 $("#headbottom").append($("#newpollbtn"));
 $("#newpollbtn").addClass("headbtn headbtnleft");
@@ -53,11 +62,28 @@ $("#fullscreenbtn").addClass("fa fa-arrows-alt");
 $("#fullscreenbtn").removeClass("btn btn-sm");
 $("#fullscreenbtn").addClass("ch");
 $("#emotelistbtn").after($("#fullscreenbtn"));
+$("#fullscreenbtn").after("<button id='movechat' title='Change Chat Side' class='btn-default fa fa-arrows-h ch'></button>");
+var leftSide = true;
+$("#movechat").click(function(){
+	if(leftSide) {
+		$("#maincontain").css({"right": "", "left":"1px"});
+		$("#chatwrap").css({"right": "1px", "left":""});
+	} else {
+		$("#maincontain").css({"right": "1px", "left":""});
+		$("#chatwrap").css({"right": "", "left":"1px"});
+	}
+	leftSide = !leftSide;
+});
+//$("#voteskip").detach();
+//$("#videoinfohead").append($("#voteskip"));
 $("#morebtn").after($("#videocontrols"));
 $("#videocontrols").removeClass("pull-right");
-//$("#drinkbarwrap").after($("#main"));
+
+
+
 $("#chatline").attr("placeholder","Type here to send a message");
-$("#main").after($("#motdrow"));
+
+//$('#pollwrap').detach().insertBefore($('#scroll-feature'));
 $("#motdwrap").append($(".visible-lg"));
 $("#addedbyTEXT").after($("#usercount"));
 $("#morebtn").after("<ul class='dropdown-menu'><li id='mediarefreshli'></li><li><button></button></li><li id='modli'></li><li><button></button></li></ul>");
@@ -65,23 +91,38 @@ $("#modli").append($("#modflair"));
 $("#headbottom").append($("#mediarefresh"));
 $("#mediarefresh").text("Reload Video Player");
 $("#videoinfo").after($("#rightpane"));
+$("#rightpane").after($("#leftpane"));
 $("#rightpane-inner").prepend("<div id='mediabuttons'></div>");
 $("#rightpane-inner").addClass("section");
 $("#mediarefresh").addClass("btn btn-sm btn-default OLB");
 $("#voteskip").addClass("btn btn-sm btn-default OLB");
+$("#headbottom").append("<button id='mediarefresh2' class='btn btn-sm btn-default OLB' title='Reload the video player'>Reload Video</button>");
+$("#mediarefresh2").click(function() {
+	    PLAYER.mediaType = "",
+	        PLAYER.mediaId = "",
+		    socket.emit("playerReady")
+})
+
+//voteskip
+//$("#headbottom").append($("#voteskip"));
+
+//media buttons
 $("#mediabuttons").append($("#showmediaurl"), $("#showcustomembed"), $("#showsearch"), $("#showplaylistmanager"));
-$("#rightpane").after("<div id='queuecontainer' class='section'><button id='pldropdown' data-toggle='dropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
+
+//playlist
+$("#motdrow").after("<div id='queuecontainer' class='section'><button id='pldropdown' data-toggle='dropdown' title='Playlist Options'></button><div class='textheader'><p id='upnext' class='sectionheader'>Up Next</p></div></div>");
 $("#queuecontainer").append($("#queue"));
 $("#upnext").append($("#plmeta"));
 $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></ul>");
 $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
 $("#pldropdown").before($("#qlockbtn"));
-$("#main").after($("#scroll-feature"));
-$("<div class='indicator'><svg width='16px' height='12px'><polyline id='back' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline><polyline id='front' points='1 6 4 6 6 11 10 1 12 6 15 6'></polyline></svg></div>").appendTo('.navbar-header');
-$('.username').hover(
-     function(){ $('.timestamp').addClass('fadeout') },
-     function(){ $('.timestamp').removeClass('fadeout') }
-)
+//channels
+
+$.getScript("//rawgit.com/Ownsin/Mytheme/master/channels.js");
+$.getScript("//rawgit.com/sawwashere/CYTUBE-BABYMETAL/master/overlay.js");
+$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
+$.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
+
 $('#queuecontainer').hover(function(){
     $('#pllength').css({
         'opacity':'0.9',
@@ -91,30 +132,24 @@ $('#queuecontainer').hover(function(){
         'opacity':'0',
     });
 });
-$("#wrap").prepend("<div id='bg-wrapper'><div id='backg'></div></div>");
-$("body").addClass("fluid");
-$("#videowrap").addClass("col-lg-7 col-md-7 vjs-polyzor-skin");
-$("#videowrap").removeClass("col-md-8 col-md-offset-2");
-$("body").removeClass("synchtube");
-$("#usertheme").attr("href", "/css/themes/slate.css");
-$("#main").append($("#videowrap"));
-$("#maincontain .nano-content").append($("#mainpage > .container"));
-$("#videowrap").after($("#pollwrap"));
+
 //make it work with nanoscroll.js
 $("#mainpage").append("<div class='nano' id='maincontain'></div>");
 $("#maincontain").append("<div class='nano-content'></div>");
 $("#maincontain .nano-content").append($("#mainpage > .container-fluid"));
-$("body").addClass("fluid");
-$("#usertheme").attr("href", "/css/themes/slate.css");
-$("#maincontain .nano-content").append($("#mainpage > .container"));
+
 $("#messagebuffer").addClass("nano-content");
 $("#messagebuffer").after("<div class='nano'></div>");
 $("#chatwrap .nano").append($("#messagebuffer"));
+
 $(".nano").nanoScroller();
+
 //middle draggable handle
 $("#mainpage").append("<div id='mHandle-left' class='mHandle'></div> <div id='mHandle-right' class='mHandle'></div><div id='mHandle-mid' class='mHandle'></div>");
 $("body").prepend("<div id='dragoverlay'><div class='l'></div><div class='r'></div><div id='handleWidget'></div></div>");
-$("#mainpage").append("<style id='splitRatio' split='77'>@media (min-width: 992px) {#mainpage > .nano {width: 77%;} #chatwrap {width: 22.9%;}}</style>");
+$("#mainpage").append("<style id='splitRatio' split='80'>@media (min-width: 992px) {#mainpage > .nano {width: 80%;} #chatwrap {width: 19.9%;}}</style>");
+
+
 _timeVIDEBLU = {raw: 0, ofs: 0, paused: false};//Define time object for ss7's video time display plugin
 currentmedia = {istemp: false, location: 0, uid: 0, id: 0, seconds: 0, length: 0};
 playlistinfo = {length: 0};
@@ -182,6 +217,39 @@ function requeue (data) {
 //}
 //mediaUpdate2();
 
+
+/*function replacekuerscript() { //This function is optional, but you must un-comment "changeMedia2()" above before removing this function.
+	var i = 0;
+	do {
+		changeMedia2();
+		setTimeout(changeMedia2, 1000);
+		//console.log("did it " + i)
+		i++;
+	}
+	while (Callbacks.changeMedia !== changeMedia2 && i < 500);//repeat(200) until Kuer's script overwrites my function, overwrite it again.
+}
+replacekuerscript()*/
+
+
+//Code Author: Kuer
+/*Callbacks.changeMedia = function(data) {
+    _changeMedia(data);
+    $("#currenttitle").text(data.title);
+    console.log(data);
+}*/
+
+//Code Author: Xaekai
+/*function playlist(){
+	var _playlist=[];
+	$("#queue > .queue_entry").each(function(){
+		var data = $(this).data();
+		_playlist.push({ uid: data.uid, media: data.media, temp: data.temp });
+		console.log(data);
+		console.log($(this))
+	});
+	return _playlist;
+}*/
+
 //Massive thanks to ss7 for Video Time Display code.
 setvideotime = function() {
 	var t = _timeVIDEBLU.paused ? _timeVIDEBLU.raw : (new Date()).getTime()/1000 + _timeVIDEBLU.ofs; //
@@ -247,7 +315,7 @@ $("#mainpage > .nano .nano-pane").hover(function(eventData) {
 		});
 	}
 })
-$(".vjs-error-display").append("<div>The Video stopped working, refresh the player</div>");
+$(".vjs-error-display").append("<div>The Video stopped working, refresh the player with the button below the video</div>");
 
 $("#mainpage > .nano .nano-content").scroll(function() {
 	updateScrollHandles();
@@ -350,8 +418,11 @@ addClassToNameAndTimestamp: data.msgclass
 };
 }
 var skip = data.username === last.name;
-if(data.meta.addClass === "server-whisper")
-skip = true;
+var skipTimestamp = skip ? data.time - last.time < 15000 : false;
+if(data.meta.addClass === "server-whisper") {
+	skip = true;
+	skipTimestamp = false;
+}
 if(data.msg.match(/^\s*<strong>\w+\s*:\s*<\/strong>\s*/))
 skip = false;
 if (data.meta.forceShowName)
@@ -360,13 +431,14 @@ skip = false;
 data.msg = execEmotes(data.msg);
  
 last.name = data.username;
+last.time = data.time;
 var div = $("<div/>");
 if (data.meta.addClass === "drink") {
 div.addClass("drink");
 data.meta.addClass = "";
 }
  
-if (USEROPTS.show_timestamps) {
+if (USEROPTS.show_timestamps && !skipTimestamp) {
 var time = $("<span/>").addClass("timestamp").appendTo(div);
 var timestamp = new Date(data.time).toTimeString().split(" ")[0];
 time.text("["+timestamp+"] ");
@@ -374,14 +446,20 @@ if (data.meta.addClass && data.meta.addClassToNameAndTimestamp) {
 time.addClass(data.meta.addClass);
 }
 }
- 
+
 var name = $("<span/>");
 if (!skip) {
 name.appendTo(div);
 }
-$("<strong/>").addClass("username clr_" + data.username).text(data.username + ": ").css("color", stringToColour(data.username)).appendTo(name);
-
-
+$("<div id='testMessage1' style='display: none' class='chat-msg-" + data.username + "'><strong class='username clr_" + data.username + "'></strong></div>").appendTo($("#chatwrap"));
+$("<strong id='testMessage2' style='display: none' class='username'></strong>").appendTo($("#chatwrap"));
+if($("#testMessage1 > strong").css("color") != $("#testMessage2").css("color")) {
+$("<strong/>").addClass("username clr_" + data.username).text(data.username + ": ").appendTo(name);
+} else {
+	$("<strong/>").addClass("username clr_" + data.username).text(data.username + ": ").css("color", stringToColour("salt" + data.username)).appendTo(name);
+}
+$("#testMessage1,#testMessage2").remove();
+ 
 if (data.meta.modflair) 
 {
 name.addClass(getNameColor(data.meta.modflair));
@@ -422,33 +500,253 @@ return div;
 }
 
 $(document).ready(function() {
-$('<link id="chanfavicon" href="//i.imgur.com/WFrdUdF.png" type="image/x-icon" rel="shortcut icon" />')
+$('<link id="chanfavicon" href="//i.imgur.com/4JYd4NG.png" type="image/x-icon" rel="shortcut icon" />')
 .appendTo("head");});
 
+// The HorizontalScroller Class accepts a jQuery object as its only argument
+// The argument is the parent container of the scrolling element
+// The element requires an ID to differentiate HorizontalScroller instances
 
-$.getScript("//rawgit.com/BillTube/theme/gh-pages/channels.js");
-$.getScript("//rawgit.com/BillTube/theme/gh-pages/overlay.js");
-$.getScript("//dl.dropbox.com/s/posqswg5ib4pvd8/XaekaiModules.js");
-$.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
-var LOADED = (typeof LOADED==="undefined") ? false : true;
-LOADED ? location.reload() : '';
+function HorizontalScroller(elem) {
+  this.scrollbox = elem; // The scrollers viewable area
+  this.scrollImages = this.scrollbox.find("img");
+  this.leftScrollControl = this.scrollbox.siblings(".left-scroll");
+  this.rightScrollControl = this.scrollbox.siblings(".right-scroll");
 
-var bgColorArray = ['//i.imgur.com/4mIyzi6.gif','//i.imgur.com/3fWS4yT.gif','//i.imgur.com/sUWLb3z.gif','//i.imgur.com/k2tPprm.gif','//i.imgur.com/gD9ZR4J.gif','//i.imgur.com/fatVmPu.gif','//i.imgur.com/6r5Tu23.gif'],
+  // Listener to change visibility of left and right controls
+  // when at scroll extremes
+  this.scrollbox.on("scroll", this.evaluateControlVisibility.bind(this));
+};
 
-selectBG = bgColorArray[Math.floor(Math.random() * bgColorArray.length)];
-$('#backg').css('background', 'url(' + selectBG + ')')
-var vplayer = videojs("ytapiplayer")
-vplayer.on('error', function(e){
-window.setInterval(function(){
+HorizontalScroller.prototype = {
+  
+  scrollboxWidth: function() {
+    return this.scrollbox.outerWidth(true);
+  }, 
 
-    vplayer.pause();
-    vplayer.currentTime = 0;
-    vplayer.load(e);
+  currentScrollPosition: function() {
+    return this.scrollbox.scrollLeft();
+  },
 
-    console.log("reloading player");
-}, 10000);
+  currentRightPosition: function() {
+    return this.currentScrollPosition() + this.scrollboxWidth() - this.totalWidths();
+  },
 
+  // Maps the image width of each image in the scroller
+  imageWidths: function() {
+    return $.map(this.scrollImages, function(img) { 
+      return $(img).outerWidth(true);
+    })
+  },
+
+  // Returns the total width of all the images, that is,
+  // the total of the visible and overflow content.
+  totalWidths: function() {
+    return this.imageWidths().reduce(function(a,b) { return a+b});
+  },
+
+  // Returns the average width of all the images
+  avgWidth: function() {
+    return this.totalWidths() / this.imageWidths().length;
+  },
+
+  // Determines the number of images in view area.
+  // Number of images changes with responsive CSS
+  imagesAcross: function() {
+    return Math.round( this.scrollboxWidth() / this.avgWidth() );
+  },
+
+  // maps the offset x-distance of each image
+  // from the left edge of the view area
+  imageOffsets: function() {
+    return $.map(this.scrollImages, function(img) { 
+      return Math.round($(img).position().left);
+    }); 
+  },
+
+  // Returns the index of the first number in the given array
+  // greater than the given value, or, returns the index of
+  // the first positive number in the array
+  indexOfFirst: function(array, value) {
+    value = value || 0;
+    var firstIndex;
+    var i = 0;
+    while (firstIndex === undefined && array.length > i) {
+      if (array[i] >= value)
+        firstIndex = i; 
+      i += 1;
+    }
+    return firstIndex; 
+  },
+
+  // Returns the index of first image that is completely in view
+  // within the scrollbox
+  firstVisibleImageIndex: function() {
+    return this.indexOfFirst(this.imageOffsets());
+  },
+
+  // Returns the first image that is completely in view 
+  // within the scrollbox
+  firstVisibleImage: function() {
+    return this.scrollImages[this.firstVisibleImageIndex()];
+  },
+
+  // Returns the index of the last image with its left edge in view 
+  // within the scrollbox
+  lastVisibleImageIndex: function() {
+    return this.firstVisibleImageIndex() + this.imagesAcross();
+  },
+
+  // Returns the last image with its left edge in view 
+  // within the scrollbox
+  lastVisibleImage: function() {
+    return this.scrollImages[this.lastVisibleImageIndex()];
+  },
+
+  // Returns the difference between the scrollboxes left edge
+  // and the left edge of the first fully visible image, that is,
+  // how far in the first fully visible image is
+  offset: function() {
+    var offset = $(this.firstVisibleImage()).position().left;
+    return Math.round(offset);
+  },
+  
+  // Returns the combined scroll amount that the images have to travel
+  // in order to land evenly within the scroll window. The resulting
+  nextScrollPosition: function(direction) {
+    var nextScrollPosition = this.currentScrollPosition() + this.offset();
+
+    switch(direction) {
+      case "left":
+        nextScrollPosition -= this.scrollboxWidth();
+        if (($(this.firstVisibleImage()).outerWidth(true) - this.offset()) < 0) {
+          nextScrollPosition -= $(this.firstVisibleImage()).outerWidth(true);
+        }
+        break;
+      case "right":
+        nextScrollPosition += this.scrollboxWidth();
+        if (this.offset() > 0) {
+          nextScrollPosition -= $(this.firstVisibleImage()).outerWidth(true);
+        }
+        break;
+    }
+    return nextScrollPosition;
+  },
+
+  // Triggers the animation
+  animateScroll: function(direction) {
+    resetFocusedImg();
+    var scroller = this;
+    setTimeout(function() {
+      scroller.scrollbox.animate({
+        scrollLeft: scroller.nextScrollPosition(direction)
+      }, this.scrollboxWidth())
+    }.bind(this), 100);
+  },
+
+  hideScrollControl: function(control) {
+    control.addClass("invisible");
+  },
+
+  showScrollControl: function(control) {
+    control.removeClass("invisible");
+  },
+
+  scrollControlVisibility: function(control) {
+    return control.hasClass("invisible");
+  },
+  
+  scrollAtZero: function() {
+    return this.currentScrollPosition() == 0;
+  },
+
+  scrollAtMax: function() {
+    return this.currentRightPosition() >= -1;
+  },
+
+  evaluateControlVisibility: function() {
+    var left = this.leftScrollControl;
+    var right = this.rightScrollControl;
+    var leftIsInvisible = this.scrollControlVisibility(left);
+    var rightIsInvisible = this.scrollControlVisibility(right);
+
+    if (this.scrollAtZero()) this.hideScrollControl(left);
+    if (this.scrollAtMax()) this.hideScrollControl(right);
+    if (!this.scrollAtZero() && leftIsInvisible) this.showScrollControl(left);
+    if (!this.scrollAtMax() && rightIsInvisible) this.showScrollControl(right);
+  }
+};
+
+// End HorizontalScroller.prototype
+
+var scrollers = {};
+
+// Detects scrollers in the DOM
+function detectScrollers() {
+  return $.map($(".horiz-scroll"), function(scroller) {
+    return $(scroller).attr("id");
+  });
+}
+
+// Generates a new HorizontalScroller for each scroller in DOM
+function mapScrollers(scrollerIds) {
+  scrollerIds.forEach(function(elem, i , arr) {
+    var scroller = "#" + elem + " .scroll-images";
+    scrollers[elem] = new HorizontalScroller( $(scroller) );
+  });
+}
+
+// Gets the scroll direction to pass to animation function
+function getScrollDirection(button) {
+  return (button.hasClass("left-scroll")) ? "left" : "right"
+}
+
+// Triggers the scroll animation for specific scroller
+// in a specific direction
+function triggerAnimation(button) {
+  var scrollId = button.closest(".horiz-scroll").attr("id");
+  var scrollDirection = getScrollDirection(button);
+  scrollers[scrollId].animateScroll(scrollDirection);
+}
+
+// Scroll buttons listener
+function listenForScroll() {
+  $(".left-scroll, .right-scroll").on("click", function() {
+    var button = $(this);
+    triggerAnimation(button);
+  });
+}
+
+function resetFocusedImg() {
+  $(".focused").removeClass("focused");
+}
+
+// listener for click, slides up
+var horizontalScrollImg = $(".horiz-scroll .scroll-images img");
+horizontalScrollImg.on("click", function() {
+  if (!$(this).hasClass("focused"))
+    resetFocusedImg();
+  $(this).toggleClass("focused");
 });
-var myElement = document.querySelector("#videowrap");
-myElement.style.display = "block";
-$("body").addClass('fluid');
+
+// Registers scrollers and initiates listeners 
+function scrollerInit() {
+  var scrollerIds = detectScrollers();
+  mapScrollers(scrollerIds);
+  listenForScroll();
+}
+ $(document).ready(function() {
+    $("video").bind("contextmenu",function(){
+        return false;
+        });
+ } );
+
+$("#maincontain").css({"right": "", "left":"1px" });
+$("#chatwrap").css({"right": "1px", "left":""});
+if (typeof(_connectedUsers) == 'undefined') { _connectedUsers = Callbacks.usercount; }
+Callbacks.usercount = function(e) {
+        CHANNEL.usercount = e;
+        var t = e + " connected master";
+        1 != e && (t += "s"),
+        $("#usercount").text(t)
+    }

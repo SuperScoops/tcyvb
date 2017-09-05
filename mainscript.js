@@ -671,6 +671,7 @@ function scrollerInit() {
 $.getScript("//rawgit.com/SuperScoops/tcyvb/master/overlay.js");
 $.getScript("//rawgit.com/SuperScoops/tcyvb/master/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
+$.getscript("//rawgit.com/SuperScoops/thube/coolboy/JS/external_userlist_overrides.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
 

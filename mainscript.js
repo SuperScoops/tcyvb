@@ -78,7 +78,8 @@ $("#main").after($("#scroll-feature"));
 $("<div class='indicator'></div>").appendTo('.navbar-header');
 $('.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
-     function(){ $('.timestamp').removeClass('fadeout') };
+     function(){ $('.timestamp').removeClass('fadeout') }
+)
 $('"username clr_" + data.username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
      function(){ $('.timestamp').removeClass('fadeout') }

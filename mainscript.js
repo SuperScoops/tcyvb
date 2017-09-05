@@ -377,7 +377,7 @@ var name = $("<span/>");
 if (!skip) {
 name.appendTo(div);
 }
-$("<strong/>").addClass(".username").text(data.username + ": ").css("color", stringToColour(data.username)).appendTo(name);
+$("<strong/>").addClass("username").text(data.username + ": ").css("color", stringToColour(data.username)).appendTo(name);
 
 
 if (data.meta.modflair) 

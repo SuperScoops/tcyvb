@@ -1231,13 +1231,6 @@ form#logoutform {
     font-size: 19px;
 }
 
-a.navbar-brand{
-background-image: url(http://i.imgur.com/IBQkZbg.png)!important;
-background-repeat: no-repeat;
-width: 16px;
-height: 12px;
-}
-
 body {
 	background: hsl(0,0%,6%);
 }

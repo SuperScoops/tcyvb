@@ -80,9 +80,7 @@ $('username').hover(
      function(){ $('.timestamp').addClass('fadeout') },
      function(){ $('.timestamp').removeClass('fadeout') }
 )
-$('username clr_  + data.username').hover(
-     function(){ $('.timestamp').addClass('fadeout') },
-     function(){ $('.timestamp').removeClass('fadeout') }
+
 )
 $('#queuecontainer').hover(function(){
     $('#pllength').css({

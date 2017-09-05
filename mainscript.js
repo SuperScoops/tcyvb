@@ -76,7 +76,11 @@ $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplayli
 $("#pldropdown").before($("#qlockbtn"));
 $("#main").after($("#scroll-feature"));
 $("<div class='indicator'></div>").appendTo('.navbar-header');
-$('"username clr_" + data.username').hover(
+$('username').hover(
+     function(){ $('.timestamp').addClass('fadeout') },
+     function(){ $('.timestamp').removeClass('fadeout') }
+)
+$('username clr_').hover(
      function(){ $('.timestamp').addClass('fadeout') },
      function(){ $('.timestamp').removeClass('fadeout') }
 )

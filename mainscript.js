@@ -81,7 +81,6 @@ $('username').hover(
      function(){ $('.timestamp').removeClass('fadeout') }
 )
 
-)
 $('#queuecontainer').hover(function(){
     $('#pllength').css({
         'opacity':'0.9',

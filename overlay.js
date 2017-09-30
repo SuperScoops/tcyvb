@@ -10,10 +10,29 @@ $('#videowrap').hover(function(){
         'display':'none',
     });
 });
+*/
+$("#VideoOverlay").hide();
+var i = null;
+$("#videowrap").mousemove(function() {
+    clearTimeout(i);
+    $("#VideoOverlay").show();
+    i = setTimeout('$("#VideoOverlay").hide();', 5000);
+}).mouseleave(function() {
+    clearTimeout(i);
+    $("#VideoOverlay").hide();  
+});
 
 $("#VideoOverlay").append($("#voteskip"));
 $("#VideoOverlay").append($("#mediarefresh"));
 $("#VideoOverlay").append($('<button/>',{id:'toggleNND','class':'btn btn-sm btn-default OLB',html:'<span class="glyphicon glyphicon-cog"></span> NND Chat Settings',click:()=>$('#nndSettingsModal').modal()}));
+$(document).ready(function(){
+	$('#hidechat').on('click', function(){nochat();});
+	$('#showchat').on('click', function(){maxchat();});
+});
+
+
+
+
 
 var requestFullscreen = function (ele) {
 	if (ele.requestFullscreen) {

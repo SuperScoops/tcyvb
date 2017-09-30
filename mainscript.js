@@ -1,16 +1,8 @@
-
-
-
-
-
-
 //force https for videos from googs
 if (window.location.protocol != "https:")
     window.location.href = "https:" + window.location.href.substring(window.location.protocol.length);
 $('head').append("<link rel='stylesheet' href='//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css' />"); 
 console.log("sup yall");
-
-
 
 	/*! nanoScrollerJS - v0.8.7 - (c) 2015 James Florentino; Licensed MIT */
 
@@ -36,7 +28,6 @@ $("#userlisttoggle").text("");
 $("#controlsrow").after($("#motdrow"));//move channel description (motd) below controls
 $("#controlsrow").after($("#announcements"));//move cytube announcements below controls
 $(".container-fluid").append($("#footer"));//move footer into mainpage element
-
 $('#footer').children('.container').append('<p class="text-muted credit">');
 $("#mainpage").prepend($("#chatwrap"));//move chat element outside left container
 $("#userlist").prepend("<div id='connected'></div>");//create div to contain user count
@@ -84,9 +75,11 @@ $("#pldropdown").after("<ul id='ploptions' class='dropdown-menu' role='menu'></u
 $("#ploptions").append($("#shuffleplaylist"), $("#clearplaylist"), $("#getplaylist"));
 $("#pldropdown").before($("#qlockbtn"));
 $("#main").after($("#scroll-feature"));
-
 $("<div class='indicator'></div>").appendTo('.navbar-header');
-
+$('.username').hover(
+     function(){ $('.timestamp').addClass('fadeout') },
+     function(){ $('.timestamp').removeClass('fadeout') }
+)
 $('#queuecontainer').hover(function(){
     $('#pllength').css({
         'opacity':'0.9',
@@ -673,22 +666,14 @@ function scrollerInit() {
   .on("click", function() {
 	scrollQueue();
   });
-
   
 //channels
 $.getScript("//rawgit.com/SuperScoops/tcyvb/master/overlay.js");
 $.getScript("//rawgit.com/SuperScoops/tcyvb/master/XaekaiModules.js");
 $.getScript("//dl.dropbox.com/s/x54i2a14jyt58uc/settings.js");
-
 //$.getscript("//rawgit.com/SuperScoops/thube/coolboy/JS/external_userlist_overrides.js");
 var LOADED = (typeof LOADED==="undefined") ? false : true;
 LOADED ? location.reload() : '';
-
-
-
-
-
-
 
 
 var bgColorArray = ['//i.imgur.com/dPrY8gp.jpg,//i.imgur.com/xoI7bpp.png,//i.imgur.com/AOCLnfM.jpg,//i.imgur.com/zJ73fiT.png,//i.imgur.com/ckGvKW5.png,//i.imgur.com/RbP0rDe.gif,i.imgur.com/ksHsMC8.png'],

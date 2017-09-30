@@ -10,29 +10,10 @@ $('#videowrap').hover(function(){
         'display':'none',
     });
 });
-*/
-$("#VideoOverlay").hide();
-var i = null;
-$("#videowrap").mousemove(function() {
-    clearTimeout(i);
-    $("#VideoOverlay").show();
-    i = setTimeout('$("#VideoOverlay").hide();', 5000);
-}).mouseleave(function() {
-    clearTimeout(i);
-    $("#VideoOverlay").hide();  
-});
 
 $("#VideoOverlay").append($("#voteskip"));
 $("#VideoOverlay").append($("#mediarefresh"));
 $("#VideoOverlay").append($('<button/>',{id:'toggleNND','class':'btn btn-sm btn-default OLB',html:'<span class="glyphicon glyphicon-cog"></span> NND Chat Settings',click:()=>$('#nndSettingsModal').modal()}));
-$(document).ready(function(){
-	$('#hidechat').on('click', function(){nochat();});
-	$('#showchat').on('click', function(){maxchat();});
-});
-
-
-
-
 
 var requestFullscreen = function (ele) {
 	if (ele.requestFullscreen) {
@@ -47,52 +28,7 @@ var requestFullscreen = function (ele) {
 		console.log('Fullscreen API is not supported.');
 	}
 };
-function nochat(){
-	$('#chatwrap').addClass('hidden');
-	$('#maincontain').addClass('fullvideo');
-	$('#hidechat,#scroll-feature,#motdrow,#videoinfo,#queuecontainer,#footer,.navbar,#bg-wrapper,#rightpane').addClass('hidden');
-	$('#showchat').addClass('showchat');
-	    $('#mainpage').css({
-        'padding-top':'0px',
-    });
-	    $('#videowrap').css({
-        'position':'fixed',
-        'height':'100%!important',
-    });
-	    $('.embed-responsive').css({
-        'position':'static',
-    });
-}
 
-function maxchat(){
-	$('#chatwrap').removeClass('hidden');
-	$('#maincontain').removeClass('fullvideo');
-        $('#hidechat,#scroll-feature,#motdrow,#videoinfo,#queuecontainer,#footer,.navbar,#bg-wrapper,#rightpane').removeClass('hidden');
-	$('#showchat').removeClass('showchat');
-	    $('#mainpage').css({
-        'padding-top':'50px',
-    });
-	    $('#videowrap').css({
-        'position':'inherit',
-        'height':'inherit',
-    });
-	    $('.embed-responsive').css({
-        'position':'relative',
-    });
-}
-var requestFullscreen = function (ele) {
-	if (ele.requestFullscreen) {
-		ele.requestFullscreen();
-	} else if (ele.webkitRequestFullscreen) {
-		ele.webkitRequestFullscreen();
-	} else if (ele.mozRequestFullScreen) {
-		ele.mozRequestFullScreen();
-	} else if (ele.msRequestFullscreen) {
-		ele.msRequestFullscreen();
-	} else {
-		console.log('Fullscreen API is not supported.');
-	}
-};
 var exitFullscreen = function () {
 	if (document.exitFullscreen) {
 		document.exitFullscreen();
